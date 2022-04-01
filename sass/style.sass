@@ -1,0 +1,894 @@
+@charset "utf-8"
+@import "compass"
+@import mixins
+$icons-spacing: 15px
+@import bootstrap.min.css
+@import animate.min.css
+@import materialdesignicons.min.css
+@import owl.carousel.min.css
+@import owl.theme.default.min.css
+@import jquery.fancybox.min.css
+@import mediaelementplayer.min.css
+
+// VARS
+///////////////////////////////////////////////////////////////////////
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap')
+$font-primary: 'Roboto Condensed', sans-serif
+$font-icons: "Material Design Icons"
+
+// colors
+$color-blue: #4C70B5
+$color-green: #00603D
+$color-orange: #F04E23
+$color-aqua: #0086D1
+$color-red: #BE2C46
+$color-black: #232323
+$color-gray: #EBECEC
+
+// colors primary
+$color-primary: #4C70B5
+$color-secondary: #F04E23
+$color-font: #343434
+///////////////////////////////////////////////////////////////////////
+
+/* MAIN STYLE */
+///////////////////////////////////////////////////////////////////////
+b, strong, h1, h2, h3, h4, h5, h6, th, caption
+	font-weight: 700
+p
+	line-height: normal
+	margin: 0
+i,em,q,blockquote
+	font-style: italic
+img
+	max-width: 100%
+	height: auto
+table
+	width: 100%
+img, video, figure, iframe
+	max-width: 100%
+	height: auto
+a,img,button,input,video
+	outline: none
+a
+	color: inherit
+	text-decoration: inherit
+
+// grid
+.b-row
+	+flex
+	flex-wrap: wrap
+	justify-content: flex-start
+.b-col
+	margin-bottom: 20px
+	// +r(pda)
+	// 	width: 100%
+
+// clearfix
+.l_bl
+	float: left
+.r_bl
+	float: right
+.clearfix:after
+	clear: both
+	display: block
+	content: ""
+
+[hidden]
+	display: none !important
+
+html,body
+	font-size: 16px
+	height: 100%
+
+body
+	background: #fff
+	line-height: normal
+	font-family: $font-primary
+	color: $color-font
+
+.b-wrapper
+	position: relative
+	min-width: 320px
+	overflow: hidden
+
+.b-main
+	width: 100%
+
+/* HEADER */
+///////////////////////////////////////////////////////////////////////
+.b-header
+	position: relative
+	z-index: 99
+
+// TOP PANEL HEADER
+.b-top_panel
+	background: #ffffff
+	color: $color-font
+	font-weight: 700
+	+r(sma)
+		text-align: center
+	.container
+		padding: 10px 15px
+		border-bottom: 1px solid $color-font
+		+r(sma)
+			border-bottom: none
+.b-top_info
+	float: left
+	+r(sma)
+		float: none
+		margin-bottom: 10px
+.b-top_contacts
+	float: right
+	+r(sma)
+		float: none
+	.b-link
+		display: inline-block
+		transition: all 0.3s ease
+		&:hover
+			color: $color-secondary
+
+// MAIN HEADER: LOGOTYPE & BUTTON
+.b-header_main
+	padding: 20px 0
+
+// logo
+.b-header_logo
+	float: left
+	+clr
+	+r(sma)
+		float: none
+		text-align: center
+	.b-logo
+		display: block
+		outline: none
+		color: inherit
+		text-decoration: none
+		margin-right: 15px
+		float: left
+		+r(sma)
+			display: inline-block
+			float: none
+			margin: 0 10px
+		.b-img
+			display: block
+			height: 68px
+			width: auto
+
+// call button
+.b-header_button
+	float: right
+	padding-top: 10px
+	+r(sma)
+		float: none
+		text-align: center
+
+/* NAVIGATION MENU */
+///////////////////////////////////////////////////////////////////////
+.b-header_navigation_shadow
+	display: none
+	&.active
+		display: block
+		+r(pla)
+			display: none
+.b-header_navigation
+	padding: 10px 0
+	background: $color-primary
+	color: #fff
+	position: relative
+	z-index: 99999
+	+r(pla)
+		display: none
+	&.fixed
+		position: fixed
+		top: 0
+		left: 0
+		right: 0
+		box-shadow: 0 2px 15px rgba(0,0,0,0.4)
+.b-nav
+	text-align: center
+	.b-menu
+		list-style: none
+		margin: 0
+		padding: 0
+		font-weight: 700
+		font-size: 16px
+		letter-spacing: 0.6px
+		text-transform: uppercase
+		+clr
+		& > li
+			display: inline-block
+			&.active
+				color: $color-secondary
+			& > a
+				display: block
+				padding: 10px
+				color: inherit
+				text-decoration: none
+				transition: all 0.3s ease
+				&:hover, &:active
+					color: $color-secondary
+			& > ul, & > ol, & > .sub-menu
+				display: none
+
+// MOBILE NAVIGATION MENU
+.b-mobmenu-button
+	display: none
+	position: fixed
+	z-index: 999
+	top: 30px
+	right: 0
+	+r(pla)
+		display: block
+	.b-mobmenu-but
+		display: inline-block
+		background: $color-secondary
+		color: #fff
+		height: 40px
+		line-height: 38px
+		padding: 0 20px 0 20px
+		text-align: center
+		border: none
+		border-radius: 10px 0 0 10px
+		font-size: 18px
+		text-transform: uppercase
+		outline: none
+		text-decoration: inherit
+		transition: all 0.3s ease
+		opacity: 0.8
+		+r(pda)
+			box-shadow: 0 9px 20px 0 rgba(240,78,35,.6)
+		&:hover
+			background: $color-primary
+			color: #fff
+		& > span 
+			+r(sma)
+				display: none
+
+.b-mobnav-wrap
+	visibility: hidden
+	position: fixed
+	z-index: 99999999
+	top: 0
+	right: -200px
+	left: 0
+	bottom: 0
+	background: transparent
+	overflow: hidden
+	-webkit-transition: all 0.4s linear
+	transition: all 0.4s linear
+	&.active
+		display: block
+		background: rgba(0,0,0,0.2)
+		right: 0
+		visibility: visible
+		@media only screen and (min-width: 992px)
+			display: none
+.b-mobnav
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	overflow: auto
+	background: $color-primary
+	box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.1)
+	-webkit-box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.1)
+	padding: 10px 0 20px
+	width: 200px
+	color: #fff
+	max-width: 100%
+	-webkit-transition: all 0.3s linear
+	transition: all 0.3s linear
+	text-align: center
+.b-mobnav_but
+	width: 100%
+	padding: 10px
+	margin-bottom: 10px
+	text-align: center
+	position: relative
+	.b-mobnav_title
+		font-size: 18px
+		font-weight: 700
+		text-transform: uppercase 
+		letter-spacing: 1px
+	.b-mobnav_close
+		display: inline-block
+		background: transparent
+		border: none 
+		outline: none 
+		font-size: 24px 
+		padding: 4px 10px
+		color: #fff
+		-webkit-transition: all 0.3s linear
+		transition: all 0.3s linear
+		&:hover 
+			color: $color-secondary
+.b-mobmenu
+	list-style: none
+	padding: 0
+	margin: 0
+	padding-bottom: 20px
+	font-size: 14px
+	& > li
+		margin-bottom: 1px
+		& > a 
+			display: block 
+			padding: 10px
+			-webkit-transition: all 0.3s linear
+			transition: all 0.3s linear
+			position: relative
+			text-decoration: inherit
+			color: #fff
+			text-transform: uppercase
+			letter-spacing: 1px
+			font-weight: 700
+			&:hover 
+				background: $color-secondary
+				color: #fff
+				border-radius: 15px
+				padding-left: 20px
+		&.active > a
+			background: $color-secondary
+			color: #fff
+			border-radius: 15px
+			padding-left: 20px
+		& > .sub-menu, & > ul
+			display: none
+
+/* HOME */
+///////////////////////////////////////////////////////////////////////
+.b-home
+	background: #ffffff url(../images/home/image-4-1600x900.jpg)
+	+cover
+	padding: 150px 0
+	color: #fff
+	+r(lpd)
+		padding: 100px 0
+	+r(sma)
+		padding: 40px 0
+.b-home_content
+	color: #fff
+	text-transform: uppercase
+	letter-spacing: 0.4px
+	text-shadow: 1px 1px 0 #444
+	+r(pla)
+		text-align: center
+	+r(sma)
+		font-size: 12px
+	.b-title
+		font-size: 24px
+		+r(sma)
+			font-size: 18px
+	p
+		line-height: 1.2
+		margin-bottom: 10px
+
+/* ABOUT */
+///////////////////////////////////////////////////////////////////////
+// .b-about
+
+
+/* VIDEO-BOX */
+///////////////////////////////////////////////////////////////////////
+.b-video-box
+	padding: 120px 0
+	background: $color-primary url(../images/home/image-3-1600x900.jpg) fixed
+	+cover
+	color: #fff
+
+/* REQUEST */
+///////////////////////////////////////////////////////////////////////
+.b-request
+	background: $color-primary url(../images/background/promo_bg.jpg)
+	+cover
+	color: #fff
+
+/* VANTAGES */
+///////////////////////////////////////////////////////////////////////
+.b-vantages-box
+	background: $color-gray 
+.b-vantages
+	.b-item
+		text-align: center
+		padding-top: 20px
+		.b-icon
+			display: block 
+			width: 120px
+			height: 120px
+			margin: 0 auto 20px
+			img 
+				display: block 
+				width: 100%
+				height: 100%
+				object-fit: cover
+		.b-title 
+			font-size: 18px
+			font-weight: 700
+			line-height: 1.2
+			text-transform: uppercase
+			margin: 0 0 15px
+			color: $color-secondary
+		.b-text
+			font-size: 16px
+			line-height: 1.5
+			padding: 0 15px
+			max-width: 600px
+			margin: 0 auto
+
+/* SERVICES */
+///////////////////////////////////////////////////////////////////////
+// .b-service-box
+.b-service_list
+	list-style: none 
+	padding: 0
+	margin: 0
+	font-size: 18px
+	+r(sma)
+		font-size: 16px	
+	& > li 
+		margin-bottom: 10px 
+		font-weight: 700 
+		&:before 
+			content: "\F85D"
+			display: inline-block
+			font-family: $font-icons
+			margin-right: 10px
+
+/* PROGRESS */
+///////////////////////////////////////////////////////////////////////
+.b-progress-box
+	background: $color-gray
+.b-progress
+	padding: 20px 0 0
+.b-progress_item
+	height: 100%
+	text-align: center
+	padding: 30px 0 0
+	+r(pda)
+		padding: 0
+	.b-value
+		width: 150px
+		height: 150px
+		margin: 10px auto
+		text-align: center
+		line-height: 150px
+		background: $color-primary
+		font-weight: 700
+		color: #ffffff
+		border-radius: 50%
+		overflow: hidden
+		position: relative
+		+r(pla)
+			width: 120px
+			height: 120px
+			line-height: 120px
+		+r(pda)
+			width: 100px
+			height: 100px
+			line-height: 100px
+		&::after
+			content: ""
+			display: inline-block
+			position: absolute
+			top: 2px
+			left: 2px
+			right: 2px
+			bottom: 2px
+			border: 1px solid #ffffff
+			border-radius: 50%
+		.b-count
+			font-size: 40px
+			+r(pla)
+				font-size: 32px
+			+r(sma)
+				font-size: 24px
+	.b-description
+		font-weight: 700
+		font-size: 20px
+		min-height: 72px
+		+r(pla)
+			font-size: 14px
+		+r(pda)
+			font-size: 12px
+			min-height: 52px
+
+/* REVIEWS */
+///////////////////////////////////////////////////////////////////////
+.b-reviews-box
+	background: url(../images/home/image-4-1600x900.jpg) fixed
+	+cover
+	color: #fff
+.b-reviews_list
+	padding-bottom: 30px
+
+/* TEAM */
+///////////////////////////////////////////////////////////////////////
+// .b-team-box
+.b-team
+	padding-top: 30px
+.b-team_item
+	height: 100%
+	text-align: center
+	padding-bottom: 30px
+	.b-team_person
+		.b-img
+			display: block
+			width: 200px
+			height: 200px
+			margin: 0 auto 20px
+			border-radius: 50%
+			overflow: hidden
+			outline: none
+			position: relative
+			&:after 
+				content: ""
+				display: block
+				width: 190px
+				height: 190px
+				border: 1px solid #ffffff
+				border-radius: 50%
+				position: absolute
+				top: 5px
+				left: 5px
+			img 
+				display: block
+				width: 100%
+				height: 100%
+				object-fit: cover
+		.b-team_caption
+			margin-bottom: 15px
+			.b-name
+				font-weight: 700
+				margin: 0 0 10px
+				color: $color-primary
+				font-size: 18px
+			.b-position
+				color: $color-secondary
+				font-weight: 700
+	.b-team_description
+		line-height: 1.3
+		font-size: 15px
+		max-width: 400px
+		margin: 0 auto
+		p
+			margin-bottom: 10px
+
+/* CONSULTATION */
+///////////////////////////////////////////////////////////////////////
+.b-consultation-box
+	background: $color-gray
+.b-consultation_content
+	height: 100%
+	padding: 15px 
+	border: 2px solid $color-primary
+	.b-title
+		font-weight: 700
+		margin-bottom: 20px
+		font-size: 22px
+.b-med_list
+	list-style: none 
+	padding: 0
+	margin: 0
+	font-size: 18px
+	+r(sma)
+		font-size: 16px	
+	& > li 
+		margin-bottom: 10px 
+		font-weight: 700 
+		&:before 
+			content: "\F6EE"
+			display: inline-block
+			font-family: $font-icons
+			margin-right: 10px
+			color: $color-aqua
+/* SLIDER */
+///////////////////////////////////////////////////////////////////////
+.b-gall_slider
+	border: 2px solid $color-primary
+	padding: 2px
+.b-gall_slider, .b-slider_list, .b-reviews_list
+	width: 100%
+	overflow: hidden
+	&.owl-theme
+		position: relative 
+		.owl-controls
+			position: absolute 
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			visibility: hidden
+			.owl-dots
+				position: absolute 
+				bottom: 0
+				left: 0
+				right: 0
+				.owl-dot
+					visibility: visible
+			.owl-nav
+				position: absolute 
+				top: 45%
+				left: 0
+				right: 0
+				[class*='owl-']
+					visibility: visible
+					position: absolute
+					font-size: 24px
+					opacity: 0.6
+					transition: all 0.3s ease
+					&:hover
+						opacity: 1
+				.owl-prev
+					left: 0
+				.owl-next
+					right: 0
+
+
+/* CONTENT & BOX */
+///////////////////////////////////////////////////////////////////////
+.b-box
+	padding: 80px 0
+	+r(sma)
+		padding: 40px 0
+
+.b-box-title
+	font-size: 32px
+	font-weight: 700
+	text-transform: uppercase
+	line-height: 1.2 
+	letter-spacing: normal
+	margin: 0 0 40px
+	text-align: center
+	position: relative
+	+r(pla)
+		font-size: 26px
+	+r(sma) 
+		font-size: 22px
+	&:after
+		content: ""
+		height: 2px
+		width: 150px
+		background: $color-secondary
+		display: block 
+		position: absolute
+		bottom: -20px
+		left: 0
+		right: 0
+		margin: 0 auto
+
+.b-sub-title
+	font-size: 18px
+	font-weight: 700
+	text-align: center
+	margin-bottom: 25px
+	text-transform: uppercase
+
+.b-content
+	font-size: 1rem
+	font-weight: 400
+	line-height: 1.4
+	p
+		margin-bottom: 10px
+
+	/* FORM */
+///////////////////////////////////////////////////////////////////////
+.b-feedback_form
+	padding: 15px
+	background: rgba(76,112,181,0.8)
+	text-align: center
+	color: #fff
+	box-shadow: 5px 5px 20px rgba(0,0,0,0.4)
+	.b-title
+		font-size: 20px
+		margin: 0 0 10px
+		font-weight: 700
+	.b-field 
+		margin: 0 0 20px
+		.b-input
+			display: block
+			width: 100%
+			background: transparent
+			color: inherit
+			font-size: 16px
+			line-height: normal 
+			padding: 10px 15px
+			outline: none
+			border: 1px solid #fff
+			transition: all 0.3s ease
+			+placeholder
+				font-size: 16px
+				color: #f6f6f6
+				font-family: $font-primary
+		.b-textarea
+			display: block
+			width: 100%
+			height: 120px
+			background: transparent
+			color: inherit
+			padding: 10px 15px
+			font-size: 16px
+			outline: none
+			border: 1px solid #fff
+			resize: none
+			transition: all 0.3s ease
+			+placeholder
+				font-size: 16px
+				color: #f6f6f6
+				font-family: $font-primary
+
+.b-samp
+	font-size: 18px
+	font-weight: 700
+	font-family: inherit
+	font-style: normal
+
+.b-button-group
+	padding: 10px 0
+	.b-button
+		display: inline-block
+		border: 1px solid #fff
+		outline: none
+		text-decoration: none
+		font-weight: 700
+		text-transform: uppercase
+		padding: 10px 15px
+
+.b-button
+	display: inline-block
+	background: transparent
+	color: inherit
+	text-decoration: none
+	outline: none
+	font-weight: 700
+	border: 2px solid transparent
+	&:hover, &:active, &:focus
+		text-decoration: none
+
+// button animation
+.b-but_anim
+	text-decoration: none
+	position: relative
+	font-size: 18px
+	line-height: 20px
+	padding: 12px 30px
+	color: #FFF
+	font-weight: 700
+	text-transform: uppercase
+	background: $color-primary
+	cursor: pointer
+	border: 2px solid $color-gray
+	overflow: hidden
+	z-index: 1
+.b-but_anim:hover, .b-but_anim:active, .b-but_anim:focus
+	color: #FFF
+.b-but_anim:before
+	content: ''
+	position: absolute
+	top: 0
+	right: -50px
+	bottom: 0
+	left: 0
+	border-right: 50px solid transparent
+	border-top: 50px solid $color-secondary
+	transition: transform 0.5s
+	transform: translateX(-100%)
+	z-index: -1
+.b-but_anim:hover:before
+	transform: translateX(0)
+
+/* FOOTER */
+///////////////////////////////////////////////////////////////////////
+.b-footer
+	background: #343434
+	color: #fff
+
+.b-footer_content
+	text-align: center
+	.b-img
+		margin-bottom: 20px
+
+.b-footer_address
+	text-align: center
+	.b-icon
+		display: block
+		font-size: 32px
+		width: 60px
+		height: 60px
+		line-height: 56px
+		background: $color-secondary
+		border: 2px solid #ffffff
+		border-radius: 50%
+		margin: 0 auto 20px
+	.b-address
+		a
+			font-size: 22px
+			color: inherit
+			text-decoration: inherit
+			transition: all 0.3s ease 
+			&:hover
+				color: $color-secondary
+				text-decoration: underline
+
+
+.b-map
+	width: 100%
+	height: auto
+	overflow: hidden
+	+r(lpd)
+		height: 600px
+	+r(sma)
+		height: 420px
+	img 
+		display: block
+		width: 100%
+		height: 100%
+		object-fit: cover
+
+// footer bottom panel
+.b-footer-panel
+	background: $color-black
+	padding: 15px 0 15px
+	color: $color-gray
+	border-top: 1px solid $color-gray
+	font-size: 14px
+	font-style: italic
+.b-copyright
+	line-height: 1.4
+	a
+		color: inherit
+		&:hover
+			color: $color-secondary
+
+/* OTHER STYLE */
+///////////////////////////////////////////////////////////////////////
+// top up
+.a-top
+	display: none
+	position: fixed
+	z-index: 11
+	bottom: 120px
+	left: 20px
+	width: 50px
+	height: 50px
+	line-height: 50px
+	background: $color-secondary
+	text-align: center
+	color: #fff
+	border-radius: 50%
+	border: none
+	outline: none
+	text-decoration: none
+	font-size: 28px
+	opacity: 0.5
+	-webkit-transition: all 0.4s linear
+	transition: all 0.4s linear
+	box-shadow: 3px 3px 15px rgba(0,0,0,0.4)
+	&:focus, &:active
+		color: #fff
+	&:hover
+		opacity: 1
+		color: #fff
+		text-decoration: none
+
+// ICONS CLASS FontAwesome
+.i
+	@each $key, $val in (map: "\F34E", phone: "\F3F2", email: "\F1F0", whatsapp: "\F5A3", skype: "\F4AF", telegram: "\F501", search: "\F349", search-plus: "F34B", search-minus: "F34A", link: "\F339", clock: "\F953", heart: "\F5F6", hospital: "\F0017")
+		&-#{$key}:before
+			content: $val
+			font-family: $font-icons
+			font-weight: 400
+			display: inline-block
+			text-align: center
+			margin-right: 5px
+
+
+.b-callform
+	display: none
+	width: 420px
+	max-width: 100%
+	text-align: center
+	background: $color-primary
+	padding: 0
+/* ANIMATION STYLE */
+///////////////////////////////////////////////////////////////////////
